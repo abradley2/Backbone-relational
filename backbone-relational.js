@@ -1042,7 +1042,9 @@
 			}
 
 			// Remove entries from `keyIds` that were already part of the relation (and are thus 'unchanged')
-			this.keyIds = _.difference( this.keyIds, _.pluck( related.models, 'id' ) );
+			this.keyIds = _.difference( this.keyIds, _.map( related.models, function ( model ) {
+        return model.id;
+      } ) );
 
 			return related;
 		},

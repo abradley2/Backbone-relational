@@ -520,7 +520,9 @@
 
 			_.each( models, (function( model ) {
 				this.stopListening( model );
-				_.invoke( model.getRelations(), 'stopListening' );
+				_.each( model.getRelations(), function ( relation ) {
+          relation.stopListening()
+        } );
 			}).bind( this ) );
 
 
